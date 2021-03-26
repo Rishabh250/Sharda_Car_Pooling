@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "748913021953",
+    "project_id": "sharda-car-pooling-e0667",
+    "storage_bucket": "sharda-car-pooling-e0667.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:748913021953:android:fd2a8eb60d59a21a8d5c00",
+        "android_client_info": {
+          "package_name": "com.example.shardacarpooling"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "748913021953-43macudf2s67h9n0a1vrplu4tmg44im7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCXB3dOSzTr-Gm_Al9Rjz9rmbPsAtpe6HM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "748913021953-43macudf2s67h9n0a1vrplu4tmg44im7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

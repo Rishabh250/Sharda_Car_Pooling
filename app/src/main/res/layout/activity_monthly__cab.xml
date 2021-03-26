@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/car_driver_bg"
+    tools:context=".Monthly_Cab">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="240dp"
+            android:layout_height="55dp"
+            android:gravity="center"
+            android:text="Register Car"
+            android:textColor="@color/colorWhite"
+            android:textSize="40dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.491"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.02" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout2"
+            android:layout_width="409dp"
+            android:layout_height="773dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView6"
+            app:layout_constraintVertical_bias="1.0">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView3"
+                android:layout_width="361dp"
+                android:layout_height="700dp"
+                app:cardBackgroundColor="@color/Opacitytransparent"
+                app:cardCornerRadius="30dp"
+                app:cardElevation="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/textView9"
+                        android:layout_width="206dp"
+                        android:layout_height="37dp"
+                        android:gravity="center"
+                        android:text="Monthly Cab"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="25dp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.496"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.024" />
+
+                    <EditText
+                        android:id="@+id/driver_full_name"
+                        android:layout_width="244dp"
+                        android:layout_height="56dp"
+                        android:background="@drawable/driver_car_bg_selector"
+                        android:hint="Full Name"
+                        android:inputType="textPersonName"
+                        android:padding="10dp"
+                        android:textColor="@color/colorBlack"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.136"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView9"
+                        app:layout_constraintVertical_bias="0.037" />
+
+                    <EditText
+                        android:id="@+id/driver_systemID"
+                        android:layout_width="244dp"
+                        android:layout_height="56dp"
+                        android:background="@drawable/driver_car_bg_selector"
+                        android:hint="System ID"
+                        android:inputType="number"
+                        android:padding="10dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.105"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/driver_full_name"
+                        app:layout_constraintVertical_bias="0.016" />
+
+                    <Spinner
+                        android:id="@+id/city_spinner"
+                        android:layout_width="137dp"
+                        android:layout_height="56dp"
+                        android:background="@drawable/driver_car_bg_selector"
+                        android:gravity="center"
+                        android:spinnerMode="dropdown"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.071"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/driver_systemID"
+                        app:layout_constraintVertical_bias="0.019" />
+
+                    <EditText
+                        android:id="@+id/car_model"
+                        android:layout_width="213dp"
+                        android:layout_height="56dp"
+                        android:background="@drawable/driver_car_bg_selector"
+                        android:hint="Car Model"
+                        android:inputType="text"
+                        android:padding="10dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.108"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/city_spinner"
+                        app:layout_constraintVertical_bias="0.03" />
+
+                    <EditText
+                        android:id="@+id/car_number"
+                        android:layout_width="213dp"
+                        android:layout_height="56dp"
+                        android:background="@drawable/driver_car_bg_selector"
+                        android:hint="Car Number"
+                        android:inputType="text"
+                        android:padding="10dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.108"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/car_model"
+                        app:layout_constraintVertical_bias="0.03" />
+
+                    <EditText
+                        android:id="@+id/dr_seats"
+                        android:layout_width="153dp"
+                        android:layout_height="56dp"
+                        android:background="@drawable/driver_car_bg_selector"
+                        android:hint="Total Seats"
+                        android:inputType="number"
+                        android:padding="10dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.076"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/evening_time"
+                        app:layout_constraintVertical_bias="0.05" />
+
+                    <EditText
+                        android:id="@+id/dr_price"
+                        android:layout_width="153dp"
+                        android:layout_height="56dp"
+                        android:background="@drawable/driver_car_bg_selector"
+                        android:hint="Price Per Month"
+                        android:inputType="number"
+                        android:padding="10dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.836"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/btn_Etime"
+                        app:layout_constraintVertical_bias="0.129" />
+
+                    <EditText
+                        android:id="@+id/morning_time"
+                        android:layout_width="125dp"
+                        android:layout_height="56dp"
+                        android:layout_below="@+id/in_date"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true"
+                        android:background="@drawable/driver_car_bg_selector"
+                        android:inputType="time"
+                        android:padding="10dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.067"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/car_number"
+                        app:layout_constraintVertical_bias="0.035" />
+
+                    <EditText
+                        android:id="@+id/evening_time"
+                        android:layout_width="125dp"
+                        android:layout_height="56dp"
+                        android:layout_below="@+id/in_date"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true"
+                        android:background="@drawable/driver_car_bg_selector"
+                        android:inputType="time"
+                        android:padding="10dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.067"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/car_number"
+                        app:layout_constraintVertical_bias="0.298" />
+
+                    <Button
+                        android:id="@+id/btn_Mtime"
+                        android:layout_width="139dp"
+                        android:layout_height="42dp"
+                        android:layout_below="@+id/btn_date"
+                        android:layout_alignStart="@+id/btn_date"
+                        android:layout_alignLeft="@+id/btn_date"
+                        android:layout_marginEnd="24dp"
+                        android:text="Morning TIME"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.947"
+                        app:layout_constraintStart_toEndOf="@+id/morning_time"
+                        app:layout_constraintTop_toBottomOf="@+id/car_number"
+                        app:layout_constraintVertical_bias="0.082" />
+
+                    <Button
+                        android:id="@+id/btn_Etime"
+                        android:layout_width="139dp"
+                        android:layout_height="42dp"
+                        android:layout_below="@+id/btn_date"
+                        android:layout_alignStart="@+id/btn_date"
+                        android:layout_alignLeft="@+id/btn_date"
+                        android:text="Evening TIME"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.666"
+                        app:layout_constraintStart_toEndOf="@+id/morning_time"
+                        app:layout_constraintTop_toBottomOf="@+id/car_number"
+                        app:layout_constraintVertical_bias="0.284" />
+
+                    <TextView
+                        android:id="@+id/textView7"
+                        android:layout_width="345dp"
+                        android:layout_height="45dp"
+                        android:gravity="center"
+                        android:text="By Registering your car\n You agree with our TERMS &amp; CONDITIONS"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="15dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/dr_price"
+                        app:layout_constraintVertical_bias="0.329" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+            <Button
+                android:id="@+id/car_dr_register"
+                android:layout_width="244dp"
+                android:layout_height="64dp"
+                android:layout_below="@+id/constraintLayout2"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/login_btn"
+                android:elevation="15dp"
+                android:text="Register"
+                android:textColor="@color/colorWhite"
+                android:textSize="25dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.496"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.977" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</ScrollView>

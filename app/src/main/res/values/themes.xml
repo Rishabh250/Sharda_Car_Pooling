@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+
+<resources>
+
+    <!-- Base application theme. -->
+
+
+    -<style parent="Theme.AppCompat.Light.NoActionBar" name="Theme.ShardaCarPooling">
+
+    <!-- Customize your theme here. -->
+
+
+    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+
+</style>
+
+</resources>

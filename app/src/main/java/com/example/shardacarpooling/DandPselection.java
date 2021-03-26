@@ -1,0 +1,128 @@
+package com.example.shardacarpooling;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ListView;
+import android.widget.RadioButton;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+
+public class DandPselection extends AppCompatActivity {
+
+    private FirebaseUser user;
+    private DatabaseReference reference;
+    private String userID;
+    FirebaseAuth auth;
+    TextView name_driver,name;
+    RadioButton driver,passenger;
+    float v = 0;
+    Button buttonDP,buttonDP2;
+    SharedPreferences sharedPreferences;
+
+    private static final String Shared_Pref_Name = "mypref";
+    private static final String Key_Name = "name";
+    private static final String Key_Email = "email";
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_dand_pselection);
+
+        auth = FirebaseAuth.getInstance();
+        driver = findViewById(R.id.driver);
+        passenger= findViewById(R.id.passenger);
+        buttonDP = findViewById(R.id.dandpbutton);
+        buttonDP2 = findViewById(R.id.dandpbutton2);
+        name_driver = findViewById(R.id.textView10);
+        name = findViewById(R.id.textView111);
+
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        reference = FirebaseDatabase.getInstance().getReference("Members");
+        userID = user.getUid();
+        sharedPreferences = getSharedPreferences(Shared_Pref_Name,MODE_PRIVATE);
+
+        String email = sharedPreferences.getString(Key_Email,null);
+
+        if(email!=null){
+            name_driver.setText(email);
+        }
+
+        reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Member member = snapshot.getValue(Member.class);
+
+                if(member!=null){
+                    String fullname = member.Full_Name;
+                    String email = member.ShardaID;
+
+                    name.setText("Welcome" + fullname);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        driver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Animation bounce1 = AnimationUtils.loadAnimation(DandPselection.this, R.anim.bounce);
+                MyBounceInterpolator myBounceInterpolator = new MyBounceInterpolator(0.2,20);
+                bounce1.setInterpolator(myBounceInterpolator);
+                driver.startAnimation(bounce1);
+                passenger.setChecked(false);
+                buttonDP.setVisibility(View.INVISIBLE);
+                buttonDP2.setVisibility(View.VISIBLE);
+            }
+        });
+
+        passenger.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Animation bounce2 = AnimationUtils.loadAnimation(DandPselection.this, R.anim.bounce);
+                MyBounceInterpolator myBounceInterpolator = new MyBounceInterpolator(0.2,20);
+                bounce2.setInterpolator(myBounceInterpolator);
+                passenger.startAnimation(bounce2);
+                driver.setChecked(false);
+                buttonDP2.setVisibility(View.INVISIBLE);
+                buttonDP.setVisibility(View.VISIBLE);
+
+            }
+        });
+        buttonDP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(DandPselection.this,Passenger_SingleORmonthly.class));
+            }
+        });
+
+        buttonDP2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(DandPselection.this,Driver_Selection_Page.class));
+            }
+        });
+
+    }
+}
