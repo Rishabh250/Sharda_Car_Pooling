@@ -13,13 +13,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ShardaCarPooling">
+        <activity android:name=".Monthly_Data.Ghaziabad.Ghaziabad_Driver" />
+        <activity android:name=".Monthly_Data.Bulandshahr.Bulandshahr_Driver" />
+        <activity android:name=".Monthly_Data.city_select" />
+        <activity android:name=".Monthly_Data.Sikandrabad.Sikandrabad_Driver" />
+        <activity android:name=".Monthly_Data.Nodia.Nodia_Driver" />
+        <activity android:name=".Monthly_Data.Khurja.Khurja_Driver" />
+        <activity android:name=".Monthly_Data.Ghaziabad.Ghaziabad_Diver" />
+        <activity android:name=".Monthly_Data.Delhi.Delhi_Driver" />
+        <activity android:name=".Monthly_Data.Bulandshahr.Bulandshahr_Driver.Bulandshahr_Driver" />
+        <activity android:name=".Monthly_Cab" />
         <activity android:name=".DandPselection" />
         <activity android:name=".Passenger_SingleORmonthly" />
-        <activity android:name=".Monthly_Cab" />
         <activity android:name=".Driver_Selection_Page" />
         <activity android:name=".Driver" />
         <activity android:name=".Get_Started" />
-        <activity android:name=".Passenger" />
         <activity android:name=".Login_Activity" />
         <activity android:name=".Intro_Page">
             <intent-filter>

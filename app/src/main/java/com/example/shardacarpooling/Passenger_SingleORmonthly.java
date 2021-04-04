@@ -10,6 +10,9 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.RadioButton;
 
+import com.example.shardacarpooling.Monthly_Data.city_select;
+import com.example.shardacarpooling.Single_Day.city_select_for_single_dr;
+
 public class Passenger_SingleORmonthly extends AppCompatActivity {
 
     RadioButton passengerSingleDay,passengerMonthlyCab;
@@ -54,7 +57,14 @@ public class Passenger_SingleORmonthly extends AppCompatActivity {
         pbtn01.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Passenger_SingleORmonthly.this,Passenger.class));
+                startActivity(new Intent(Passenger_SingleORmonthly.this, city_select.class));
+            }
+        });
+
+        pbtn02.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Passenger_SingleORmonthly.this, city_select_for_single_dr.class));
             }
         });
     }
