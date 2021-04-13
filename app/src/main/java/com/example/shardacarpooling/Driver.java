@@ -142,7 +142,7 @@ public class Driver extends AppCompatActivity {
                     databaseReference.child(dropCity).child(sysID).child("Full_Name").setValue(name);
                     databaseReference.child(dropCity).child(sysID).child("System_ID").setValue(sysID);
                     databaseReference.child(dropCity).child(sysID).child("Destination").setValue(dropCity);
-                    databaseReference.child(dropCity).child(sysID).child("Pick-up_Location").setValue(pickUp);
+                    databaseReference.child(dropCity).child(sysID).child("Pick_up_Location").setValue(pickUp);
                     databaseReference.child(dropCity).child(sysID).child("Car_Model").setValue(carModel);
                     databaseReference.child(dropCity).child(sysID).child("Car_Number").setValue(carNumber);
                     databaseReference.child(dropCity).child(sysID).child("Date").setValue(date);

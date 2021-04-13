@@ -32,7 +32,7 @@ public class Ghaziabad_Driver extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_delhi__driver);
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("Driver").child("Monthly Cab").child("Delhi");
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("Driver").child("Monthly Cab").child("Ghaziabad");
         driver_Name = findViewById(R.id.driver_Name);
         databaseReference.keepSynced(true);
 

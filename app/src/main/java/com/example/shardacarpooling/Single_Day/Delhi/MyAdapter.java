@@ -11,16 +11,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.shardacarpooling.R;
-import com.example.shardacarpooling.list;
+import com.example.shardacarpooling.list02;
 
 import java.util.ArrayList;
 
 class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
-    ArrayList<list> myList;
+    ArrayList<list02> myList;
     Context context;
 
-    public MyAdapter(Context context, ArrayList<list> myList) {
+    public MyAdapter(Context context, ArrayList<list02> myList) {
 
         this.myList = myList;
         this.context = context;
@@ -37,7 +37,7 @@ class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        final list temp = myList.get(position);
+        final list02 temp = myList.get(position);
 
         holder.name.setText(temp.getFull_Name());
         holder.sysID.setText(temp.getSystem_ID());

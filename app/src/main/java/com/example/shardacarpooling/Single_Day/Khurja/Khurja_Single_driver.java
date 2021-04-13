@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.shardacarpooling.R;
 import com.example.shardacarpooling.list;
+import com.example.shardacarpooling.list02;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -26,7 +27,7 @@ public class Khurja_Single_driver extends AppCompatActivity {
     RecyclerView driver_list;
     DatabaseReference databaseReference;
     MyAdapter myAdapter;
-    ArrayList<list> lists;
+    ArrayList<list02> lists;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +53,7 @@ public class Khurja_Single_driver extends AppCompatActivity {
 
                 lists.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    list dr_lists = dataSnapshot.getValue(list.class);
+                    list02 dr_lists = dataSnapshot.getValue(list02.class);
                     lists.add(dr_lists);
                 }
 
