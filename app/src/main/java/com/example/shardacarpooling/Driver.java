@@ -71,7 +71,7 @@ public class Driver extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String name = dr_fullName.getText().toString().trim().toUpperCase();
+                final String name = dr_fullName.getText().toString().trim();
                 final String sysID = dr_sysID.getText().toString().trim();
                 final String seats = dr_seats.getText().toString().trim();
                 final String carModel = dr_carModel.getText().toString().trim().toUpperCase();

@@ -1,7 +1,7 @@
 package com.example.shardacarpooling;
 
 public class list02 {
-    String Full_Name, System_ID,Car_Model,Car_Number,Destination,Morning_Time,Date,Price,Total_Seats,Pick_up_Location;
+    String Full_Name, System_ID,Car_Model,Car_Number,Destination,Time,Date,Price,Total_Seats,Pick_up_Location;
 
     list02(){}
 
@@ -45,12 +45,12 @@ public class list02 {
         Destination = destination;
     }
 
-    public String getMorning_Time() {
-        return Morning_Time;
+    public String getTime() {
+        return Time;
     }
 
-    public void setMorning_Time(String morning_Time) {
-        Morning_Time = morning_Time;
+    public void setTime(String time) {
+        Time = time;
     }
 
     public String getDate() {

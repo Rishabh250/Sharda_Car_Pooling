@@ -1,16 +1,18 @@
 package com.example.shardacarpooling.Single_Day.Delhi;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.shardacarpooling.R;
+import com.example.shardacarpooling.Single_Day.Bulandshahr.bsr_details;
 import com.example.shardacarpooling.list02;
 
 import java.util.ArrayList;
@@ -43,10 +45,18 @@ class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         holder.sysID.setText(temp.getSystem_ID());
         holder.price.setText(temp.getPrice());
 
-        holder.name.setOnClickListener(new View.OnClickListener() {
+        holder.go.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "Rishabh Bansal", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(context, dl_details.class);
+                intent.putExtra("seats",temp.getTotal_Seats());
+                intent.putExtra("name",temp.getFull_Name());
+                intent.putExtra("sysID",temp.getSystem_ID());
+                intent.putExtra("time",temp.getTime());
+                intent.putExtra("Date",temp.getDate());
+                intent.putExtra("model",temp.getCar_Model() +" " + temp.getCar_Number());
+                intent.putExtra("gate",temp.getPick_up_Location());
+                context.startActivity(intent);
             }
         });
     }
@@ -59,10 +69,12 @@ class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView name, sysID, price;
+        ImageView go;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
+            go = itemView.findViewById(R.id.go);
             name = itemView.findViewById(R.id.driver_Name);
             sysID = itemView.findViewById(R.id.driver_sysID);
             price = itemView.findViewById(R.id.driver_price);

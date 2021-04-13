@@ -33,7 +33,7 @@ public class Ghaziabad_Single_driver extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_delhi__driver);
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("Driver").child("Single Day Cab").child("Delhi");
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("Driver").child("Single Day Cab").child("Ghaziabad");
         driver_Name = findViewById(R.id.driver_Name);
         databaseReference.keepSynced(true);
 
