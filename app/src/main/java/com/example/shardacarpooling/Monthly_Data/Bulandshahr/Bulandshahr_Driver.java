@@ -23,8 +23,8 @@ public class Bulandshahr_Driver extends AppCompatActivity {
 
     TextView driver_Name;
     RecyclerView driver_list;
-    DatabaseReference databaseReference;
-    MyAdapter myAdapter;
+
+    MyAdapter myAdapter;DatabaseReference databaseReference;
     ArrayList<list> lists;
 
 
