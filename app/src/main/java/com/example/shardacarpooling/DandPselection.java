@@ -35,11 +35,10 @@ public class DandPselection extends AppCompatActivity {
     TextView name_driver,name;
     RadioButton driver,passenger;
     float v = 0;
-    Button buttonDP,buttonDP2;
+    Button buttonDP,buttonDP2,selectONE;
     SharedPreferences sharedPreferences;
 
     private static final String Shared_Pref_Name = "mypref";
-    private static final String Key_Name = "name";
     private static final String Key_Email = "email";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +51,7 @@ public class DandPselection extends AppCompatActivity {
         buttonDP = findViewById(R.id.dandpbutton);
         buttonDP2 = findViewById(R.id.dandpbutton2);
         name_driver = findViewById(R.id.textView10);
-        name = findViewById(R.id.textView111);
+        selectONE = findViewById(R.id.select_one);
 
         user = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("Members");
@@ -65,24 +64,14 @@ public class DandPselection extends AppCompatActivity {
             name_driver.setText(email);
         }
 
-        reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
+        selectONE.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Member member = snapshot.getValue(Member.class);
-
-                if(member!=null){
-                    String fullname = member.Full_Name;
-                    String email = member.ShardaID;
-
-                    name.setText("Welcome" + fullname);
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
+            public void onClick(View v) {
+                Toast.makeText(DandPselection.this, "Select One Option Driver or Passenger ", Toast.LENGTH_SHORT).show();
+                return;
             }
         });
+
 
         driver.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,6 +83,7 @@ public class DandPselection extends AppCompatActivity {
                 passenger.setChecked(false);
                 buttonDP.setVisibility(View.INVISIBLE);
                 buttonDP2.setVisibility(View.VISIBLE);
+                selectONE.setVisibility(View.INVISIBLE);
             }
         });
 
@@ -107,6 +97,7 @@ public class DandPselection extends AppCompatActivity {
                 driver.setChecked(false);
                 buttonDP2.setVisibility(View.INVISIBLE);
                 buttonDP.setVisibility(View.VISIBLE);
+                selectONE.setVisibility(View.INVISIBLE);
 
             }
         });

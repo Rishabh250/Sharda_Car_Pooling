@@ -10,6 +10,8 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.RadioButton;
 
+import com.example.shardacarpooling.monthly_booking.Booking_Details;
+
 public class Driver_Selection_Page extends AppCompatActivity {
 
     RadioButton monthlyCab,singleDayCab;
@@ -66,5 +68,9 @@ public class Driver_Selection_Page extends AppCompatActivity {
                 startActivity(new Intent(Driver_Selection_Page.this,Driver.class));
             }
         });
+    }
+
+    public void bookedseats(View view) {
+        startActivity(new Intent(Driver_Selection_Page.this, Booking_Details.class));
     }
 }

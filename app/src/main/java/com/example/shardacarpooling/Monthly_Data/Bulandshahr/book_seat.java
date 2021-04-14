@@ -43,6 +43,7 @@ public class book_seat extends AppCompatActivity {
         String getSeats = getIntent().getStringExtra("drSeats");
         int value = Integer. parseInt(getSeats);
 
+
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("Driver").child("Monthly Cab");
 
@@ -50,10 +51,19 @@ public class book_seat extends AppCompatActivity {
         book.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
                 final String name = pasName.getText().toString().trim();
                 final String id = passID.getText().toString().trim();
                 final String number = passNumber.getText().toString().trim();
                 final String dr_sys = drID;
+                int value2 = Integer. parseInt(id);
+                int getdrID = Integer. parseInt(drID);
+
+                if(getdrID == value2){
+                    Toast.makeText(book_seat.this, "Driver and Passenger System ID Cannot be Same !!!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
                 if(name.isEmpty() && id.isEmpty() && number.isEmpty()){
                     Toast.makeText(book_seat.this, "Enter Your Full Details", Toast.LENGTH_SHORT).show();

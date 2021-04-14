@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.shardacarpooling.Monthly_Data.Bulandshahr.book_seat;
 import com.example.shardacarpooling.R;
 
 import com.google.firebase.database.DatabaseReference;
@@ -54,6 +55,14 @@ public class gh_book extends AppCompatActivity {
                 final String id = passID.getText().toString().trim();
                 final String number = passNumber.getText().toString().trim();
                 final String dr_sys = drID;
+
+                int value2 = Integer. parseInt(id);
+                int getdrID = Integer. parseInt(drID);
+
+                if(getdrID == value2){
+                    Toast.makeText(gh_book.this, "Driver and Passenger System ID Cannot be Same !!!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
                 if(name.isEmpty() && id.isEmpty() && number.isEmpty()){
                     Toast.makeText(gh_book.this, "Enter Your Full Details", Toast.LENGTH_SHORT).show();

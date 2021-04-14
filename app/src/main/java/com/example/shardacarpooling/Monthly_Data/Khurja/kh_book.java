@@ -56,6 +56,14 @@ public class kh_book extends AppCompatActivity {
                 final String number = passNumber.getText().toString().trim();
                 final String dr_sys = drID;
 
+                int value2 = Integer. parseInt(id);
+                int getdrID = Integer. parseInt(drID);
+
+                if(getdrID == value2){
+                    Toast.makeText(kh_book.this, "Driver and Passenger System ID Cannot be Same !!!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 if(name.isEmpty() && id.isEmpty() && number.isEmpty()){
                     Toast.makeText(kh_book.this, "Enter Your Full Details", Toast.LENGTH_SHORT).show();
                     return;

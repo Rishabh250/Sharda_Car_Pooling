@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ShardaCarPooling">
-        <activity android:name=".Single_Day.Sikandrabad.si_book"></activity>
+        <activity android:name=".monthly_booking.Booking_Details"></activity>
+        <activity android:name=".Single_Day.Sikandrabad.si_book" />
         <activity android:name=".Single_Day.Sikandrabad.si_details" />
         <activity android:name=".Single_Day.Nodia.no_book" />
         <activity android:name=".Single_Day.Nodia.no_details" />
