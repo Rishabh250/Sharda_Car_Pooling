@@ -1,5 +1,6 @@
 package com.example.shardacarpooling.Monthly_Data.Bulandshahr;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -11,16 +12,26 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.shardacarpooling.R;
+import com.example.shardacarpooling.monthly_booking.MyViewHolder;
+import com.example.shardacarpooling.passengerDetails;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class book_seat extends AppCompatActivity {
 
-    TextView sysID,name,seats;
-    EditText pasName,passID,passNumber;
-    Button book;
+    TextView sysID,name,seats,pasName,passNumber;
+    EditText passID;
+    Button book,getDetails;
     DatabaseReference databaseReference;
+    DatabaseReference ref2;
     int a = 1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +43,7 @@ public class book_seat extends AppCompatActivity {
         passNumber = findViewById(R.id.pass_mN);
 
         book = findViewById(R.id.seat_books);
+        getDetails = findViewById(R.id.seat_books2);
 
         sysID = findViewById(R.id.bsr_sysID3);
         name = findViewById(R.id.bsr_name2);
@@ -47,11 +59,32 @@ public class book_seat extends AppCompatActivity {
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("Driver").child("Monthly Cab");
 
+        getDetails.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final String id = passID.getText().toString().trim();
+                ref2 = FirebaseDatabase.getInstance().getReference().child("Sharda User").child(id);
+                ref2.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        final String full_name = snapshot.child("Name").getValue().toString();
+                        final String number = snapshot.child("Mobile_Number").getValue().toString();
+                       pasName.setText(full_name);
+                       passNumber.setText(number);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+            }
+        });
+
 
         book.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
 
                 final String name = pasName.getText().toString().trim();
                 final String id = passID.getText().toString().trim();

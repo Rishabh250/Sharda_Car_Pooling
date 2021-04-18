@@ -1,5 +1,6 @@
 package com.example.shardacarpooling.Single_Day.Khurja;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -12,16 +13,21 @@ import android.widget.Toast;
 import com.example.shardacarpooling.Monthly_Data.Bulandshahr.book_seat;
 import com.example.shardacarpooling.R;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class kh_book extends AppCompatActivity {
 
-    TextView sysID,name,seats;
-    EditText pasName,passID,passNumber;
-    Button book;
+    TextView sysID,name,seats,pasName,passNumber;
+    EditText passID;
+    Button book,getDetails;
     DatabaseReference databaseReference;
+    DatabaseReference ref2;
     int a = 1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +39,7 @@ public class kh_book extends AppCompatActivity {
         passNumber = findViewById(R.id.pass_mN);
 
         book = findViewById(R.id.seat_books);
+        getDetails = findViewById(R.id.seat_books2);
 
         sysID = findViewById(R.id.s_kh_sysID3);
         name = findViewById(R.id.s_kh_name2);
@@ -46,6 +53,28 @@ public class kh_book extends AppCompatActivity {
 
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("Driver").child("Single Day Cab");
+
+        getDetails.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final String id = passID.getText().toString().trim();
+                ref2 = FirebaseDatabase.getInstance().getReference().child("Sharda User").child(id);
+                ref2.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        final String full_name = snapshot.child("Name").getValue().toString();
+                        final String number = snapshot.child("Mobile_Number").getValue().toString();
+                        pasName.setText(full_name);
+                        passNumber.setText(number);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+            }
+        });
 
 
         book.setOnClickListener(new View.OnClickListener() {
