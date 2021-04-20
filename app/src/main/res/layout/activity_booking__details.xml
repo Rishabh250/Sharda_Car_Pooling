@@ -33,6 +33,9 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:hint="System ID"
+                    android:background="@drawable/textbox"
+                    android:padding="10dp"
+                    android:paddingLeft="10dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
@@ -64,9 +67,10 @@
 
                 <Button
                     android:id="@+id/showDetails"
-                    android:layout_width="197dp"
+                    android:layout_width="180dp"
                     android:layout_height="54dp"
                     android:text="Get Details"
+                    android:background="@drawable/login_btn"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
@@ -76,9 +80,10 @@
 
                 <Button
                     android:id="@+id/deleteData"
-                    android:layout_width="197dp"
+                    android:layout_width="180dp"
                     android:layout_height="54dp"
                     android:text="Delete Data"
+                    android:background="@drawable/login_btn"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"

@@ -23,7 +23,8 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout5"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="116dp"
+                android:background="@color/colorBlue"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -37,7 +38,7 @@
                     android:layout_height="79dp"
                     android:gravity="center"
                     android:text="ENTER YOUR DETAILS"
-                    android:textColor="@color/colorBlack"
+                    android:textColor="@color/colorWhite"
                     android:textSize="30dp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -67,26 +68,28 @@
                     android:text="Full Name"
                     android:textColor="@color/colorBlack"
                     android:textSize="26dp"
+                    android:layout_marginTop="30dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.105"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/seat_books2"
-                    app:layout_constraintVertical_bias="0.062" />
+                    app:layout_constraintVertical_bias="0.0" />
 
                 <TextView
                     android:id="@+id/textView13"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
                     android:text="System ID"
                     android:textColor="@color/colorBlack"
                     android:textSize="26dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.105"
+                    app:layout_constraintHorizontal_bias="0.447"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.007" />
+                    app:layout_constraintVertical_bias="0.0" />
 
                 <TextView
                     android:id="@+id/textView14"
@@ -106,8 +109,8 @@
                     android:id="@+id/pass_name"
                     android:layout_width="237dp"
                     android:layout_height="66dp"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="20dp"
+                    android:textColor="#CFBD18"
+                    android:textSize="30dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.185"
@@ -117,24 +120,26 @@
 
                 <EditText
                     android:id="@+id/pass_sysID"
-                    android:layout_width="237dp"
-                    android:layout_height="66dp"
+                    android:layout_width="270dp"
+                    android:layout_height="70dp"
+                    android:background="@drawable/textbox"
                     android:inputType="number"
                     android:textColor="@color/colorBlack"
                     android:textSize="20dp"
+                    android:gravity="center"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.19"
+                    app:layout_constraintHorizontal_bias="0.442"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView13"
-                    app:layout_constraintVertical_bias="0.0" />
+                    app:layout_constraintVertical_bias="0.046" />
 
                 <TextView
                     android:id="@+id/pass_mN"
                     android:layout_width="237dp"
                     android:layout_height="66dp"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="20dp"
+                    android:textColor="#CFBD18"
+                    android:textSize="30dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.185"
@@ -149,19 +154,23 @@
                     android:textColor="@color/colorBlack"
                     android:textSize="25dp"
                     android:text="Book"
+                    android:background="@drawable/login_btn"
+                    android:layout_marginTop="10dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/pass_mN"
-                    app:layout_constraintVertical_bias="0.526" />
+                    app:layout_constraintVertical_bias="0" />
 
                 <Button
                     android:id="@+id/seat_books2"
                     android:layout_width="255dp"
                     android:layout_height="65dp"
                     android:text="Fetch Details"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="25dp"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="23dp"
+                    android:textStyle="bold"
+                    android:background="@drawable/login_btn"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -173,7 +182,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:padding="10dp"
                 android:id="@+id/constraintLayout6"
-                android:layout_width="411dp"
+                android:layout_width="match_parent"
                 android:layout_height="137dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

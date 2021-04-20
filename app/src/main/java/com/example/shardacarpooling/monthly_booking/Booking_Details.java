@@ -2,9 +2,15 @@ package com.example.shardacarpooling.monthly_booking;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.Manifest;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,9 +36,9 @@ public class Booking_Details extends AppCompatActivity {
 
     Button getDetails,deleteData;
     EditText sysID;
-
-    DatabaseReference ref;
+    DatabaseReference ref,ref3;
     Task<Void> ref2;
+    private static final int Request_Call = 1;
 
     FirebaseRecyclerOptions<passengerDetails> options;
     FirebaseRecyclerAdapter<passengerDetails,MyViewHolder> adapter;
@@ -61,6 +67,8 @@ public class Booking_Details extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        ref3 = FirebaseDatabase.getInstance().getReference().child("Driver");
+
         deleteData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,18 +96,54 @@ public class Booking_Details extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+
                 final String getCity = drop_city.getSelectedItem().toString().trim();
                 final String getBasis = drop_select.getSelectedItem().toString().trim();
                 final String getID = sysID.getText().toString();
+
+
                 ref = FirebaseDatabase.getInstance().getReference().child("Driver").child(getBasis).child(getCity).child(getID).child("Passengers");
                 Toast.makeText(Booking_Details.this, "Fetching Info....", Toast.LENGTH_SHORT).show();
                 options = new FirebaseRecyclerOptions.Builder<passengerDetails>().setQuery(ref,passengerDetails.class).build();
                 adapter = new FirebaseRecyclerAdapter<passengerDetails, MyViewHolder>(options) {
                     @Override
-                    protected void onBindViewHolder(@NonNull MyViewHolder holder, int i, @NonNull passengerDetails passengerDetails) {
+                    protected void onBindViewHolder(@NonNull MyViewHolder holder,int i, @NonNull passengerDetails passengerDetails) {
                         holder.name.setText(passengerDetails.getPassenger_Name());
                         holder.number.setText(passengerDetails.getPassenger_Number());
                         holder.id.setText(passengerDetails.getPassenger_ID());
+
+                        holder.call_now.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                String number = passengerDetails.getPassenger_Number().toString().trim();
+                                String dial = "tel:"+number;
+                                Intent callIntent = new Intent(Intent.ACTION_CALL);
+                                callIntent.setData(Uri.parse(dial));
+
+                                if(ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED){
+                                    Toast.makeText(Booking_Details.this, "Please Grant Permission", Toast.LENGTH_SHORT).show();
+                                    ActivityCompat.requestPermissions(Booking_Details.this,new String[]{Manifest.permission.CALL_PHONE},Request_Call);
+                                }
+                                else{
+                                    startActivity(callIntent);
+                                }
+                            }
+                        });
+
+                        holder.cancel_seat.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+
+                                ref2 = FirebaseDatabase.getInstance().getReference().child("Driver").child(getBasis)
+                                        .child(getCity).child(getID).child("Passengers").child(getRef(i).getKey())
+                                        .setValue(null).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                Toast.makeText(Booking_Details.this,"Seat Cancel", Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
+                            }
+                        });
                     }
 
                     @NonNull
@@ -116,5 +160,17 @@ public class Booking_Details extends AppCompatActivity {
             }
         });
 
+    }
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if(requestCode == Request_Call){
+            if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+            }
+            else {
+                Toast.makeText(this, "Permission Denied", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 }

@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:background="#4B99F1F1"
         android:padding="15dp">
+
         <TextView
             android:id="@+id/passenger_Name"
             android:layout_width="0dp"
@@ -26,10 +27,10 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.483"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.01" />
 
         <TextView
             android:id="@+id/passenger_number"
@@ -42,7 +43,7 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.078"
+            app:layout_constraintHorizontal_bias="0.086"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/passenger_sysID"
             app:layout_constraintVertical_bias="0.0" />
@@ -63,6 +64,35 @@
             app:layout_constraintStart_toStartOf="@+id/passenger_Name"
             app:layout_constraintTop_toBottomOf="@+id/passenger_Name"
             app:layout_constraintVertical_bias="0.11" />
+
+        <Button
+            android:id="@+id/call_now"
+            android:layout_width="154dp"
+            android:layout_height="49dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/login_btn"
+            android:text="Call Now"
+            android:textColor="@color/colorWhite"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.578"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/passenger_number"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <ImageView
+            android:id="@+id/cancel_seat"
+            android:layout_width="35dp"
+            android:layout_height="40dp"
+            android:background="@drawable/cancel"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/passenger_Name"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.012" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
