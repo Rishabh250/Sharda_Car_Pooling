@@ -12,11 +12,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.shardacarpooling.R;
+import com.example.shardacarpooling.Seat_Booked_Successfully;
 import com.example.shardacarpooling.monthly_booking.MyViewHolder;
 import com.example.shardacarpooling.passengerDetails;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseError;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,9 +31,8 @@ public class book_seat extends AppCompatActivity {
     TextView sysID,name,seats,pasName,passNumber;
     EditText passID;
     Button book,getDetails;
-    DatabaseReference databaseReference;
+    DatabaseReference databaseReference,ref3;
     DatabaseReference ref2;
-    int a = 1;
 
 
     @Override
@@ -49,28 +51,47 @@ public class book_seat extends AppCompatActivity {
         name = findViewById(R.id.bsr_name2);
         seats = findViewById(R.id.bsr_total_seats);
 
+        ref3 = FirebaseDatabase.getInstance().getReference().child("Driver").child("Monthly Cab").child("Bulandshahr");
+
 
         String drname = getIntent().getStringExtra("drName");
         String drID = getIntent().getStringExtra("drSYStemID");
         String getSeats = getIntent().getStringExtra("drSeats");
         int value = Integer. parseInt(getSeats);
-
-
+        
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("Driver").child("Monthly Cab");
 
         getDetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String id = passID.getText().toString().trim();
+                String id = passID.getText().toString().trim();
+
+                if(passID.getText().toString().isEmpty()){
+                    Toast.makeText(book_seat.this, "Enter your System ID", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if(passID.getText().toString().trim().length() != 10){
+                    Toast.makeText(book_seat.this, "Invalid System ID", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 ref2 = FirebaseDatabase.getInstance().getReference().child("Sharda User").child(id);
                 ref2.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        final String full_name = snapshot.child("Name").getValue().toString();
-                        final String number = snapshot.child("Mobile_Number").getValue().toString();
-                       pasName.setText(full_name);
-                       passNumber.setText(number);
+                        
+                        if(snapshot.exists()) {
+
+                            String full_name = snapshot.child("Name").getValue().toString();
+                            String number = snapshot.child("Mobile_Number").getValue().toString();
+                            pasName.setText(full_name);
+                            passNumber.setText(number);
+                        }
+                        else{
+                            Toast.makeText(book_seat.this, "Data not found !!", Toast.LENGTH_SHORT).show();
+                        }
                     }
 
                     @Override
@@ -86,29 +107,19 @@ public class book_seat extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                int a = 1;
                 final String name = pasName.getText().toString().trim();
-                final String id = passID.getText().toString().trim();
+                final String PASSid = passID.getText().toString().trim();
                 final String number = passNumber.getText().toString().trim();
-                final String dr_sys = drID;
-                int value2 = Integer. parseInt(id);
-                int getdrID = Integer. parseInt(drID);
+                final String dr_sys = drID.toString().trim();
 
-                if(getdrID == value2){
-                    Toast.makeText(book_seat.this, "Driver and Passenger System ID Cannot be Same !!!", Toast.LENGTH_SHORT).show();
-                    return;
-                }
 
-                if(name.isEmpty() && id.isEmpty() && number.isEmpty()){
+                if(name.isEmpty() && PASSid.isEmpty() && number.isEmpty()){
                     Toast.makeText(book_seat.this, "Enter Your Full Details", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                if(id == dr_sys){
-                    Toast.makeText(book_seat.this, "You cannot be your own Passenger!!!!", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                if(id.length() != 10 ){
+                if(PASSid.length() != 10 ){
                     Toast.makeText(book_seat.this, "Invalid System ID", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -117,13 +128,27 @@ public class book_seat extends AppCompatActivity {
                     Toast.makeText(book_seat.this, "Invalid Mobile Number", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                String getSeats = String.valueOf(value - a);
-                databaseReference.child("Bulandshahr").child(drID).child("Total_Seats").setValue(getSeats);
-                databaseReference.child("Bulandshahr").child(drID).child("Passengers").child(id).child("Passenger_Name").setValue(name);
-                databaseReference.child("Bulandshahr").child(drID).child("Passengers").child(id).child("Passenger_ID").setValue(id);
-                databaseReference.child("Bulandshahr").child(drID).child("Passengers").child(id).child("Passenger_Number").setValue(number);
+    
+                if(!PASSid.equals(dr_sys)){
 
-                Toast.makeText(book_seat.this, "Seat Booked", Toast.LENGTH_SHORT).show();
+                    String getSeats = String.valueOf(value - a);
+                    databaseReference.child("Bulandshahr").child(drID).child("Total_Seats").setValue(getSeats);
+                    databaseReference.child("Bulandshahr").child(drID).child("Passengers").child(PASSid).child("Passenger_Name").setValue(name);
+                    databaseReference.child("Bulandshahr").child(drID).child("Passengers").child(PASSid).child("Passenger_ID").setValue(PASSid);
+                    databaseReference.child("Bulandshahr").child(drID).child("Passengers").child(PASSid).child("Passenger_Number").setValue(number);
+
+                    Toast.makeText(book_seat.this, "Seat Booked", Toast.LENGTH_SHORT).show();
+
+                    startActivity(new Intent(book_seat.this, Seat_Booked_Successfully.class));
+                    finish();
+                }
+
+                else{
+                    Toast.makeText(book_seat.this, "Driver and Passenger ID cannot be Same", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                
+
             }
         });
         name.setText(drname);

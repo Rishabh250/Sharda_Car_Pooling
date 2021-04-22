@@ -3,6 +3,7 @@ package com.example.shardacarpooling.Monthly_Data.Nodia;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,9 +11,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.shardacarpooling.Monthly_Data.Bulandshahr.book_seat;
-import com.example.shardacarpooling.Monthly_Data.Delhi.delhi_book;
+
 import com.example.shardacarpooling.R;
+import com.example.shardacarpooling.Seat_Booked_Successfully;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -79,28 +80,19 @@ public class no_book extends AppCompatActivity {
         book.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                int a = 1;
                 final String name = pasName.getText().toString().trim();
-                final String id = passID.getText().toString().trim();
+                final String PASSid = passID.getText().toString().trim();
                 final String number = passNumber.getText().toString().trim();
-                final String dr_sys = drID;
+                final String dr_sys = drID.toString().trim();
 
-                int value2 = Integer. parseInt(id);
-                int getdrID = Integer. parseInt(drID);
 
-                if(getdrID == value2){
-                    Toast.makeText(no_book.this, "Driver and Passenger System ID Cannot be Same !!!", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if(name.isEmpty() && id.isEmpty() && number.isEmpty()){
+                if(name.isEmpty() && PASSid.isEmpty() && number.isEmpty()){
                     Toast.makeText(no_book.this, "Enter Your Full Details", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                if(id == dr_sys){
-                    Toast.makeText(no_book.this, "You cannot be your own Passenger!!!!", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if(id.length() != 10 ){
+                if(PASSid.length() != 10 ){
                     Toast.makeText(no_book.this, "Invalid System ID", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -109,12 +101,24 @@ public class no_book extends AppCompatActivity {
                     Toast.makeText(no_book.this, "Invalid Mobile Number", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                String getSeats = String.valueOf(value - a);
-                databaseReference.child("Noda").child(drID).child("Total_Seats").setValue(getSeats);
-                databaseReference.child("Noda").child(drID).child("Passengers").child(id).child("Passenger_Name").setValue(name);
-                databaseReference.child("Noda").child(drID).child("Passengers").child(id).child("Passenger_ID").setValue(id);
-                databaseReference.child("Noda").child(drID).child("Passengers").child(id).child("Passenger_Number").setValue(number);
-                Toast.makeText(no_book.this, "Seat Booked", Toast.LENGTH_SHORT).show();
+
+                if(!PASSid.equals(dr_sys)){
+
+                    String getSeats = String.valueOf(value - a);
+                    databaseReference.child("Noida").child(drID).child("Total_Seats").setValue(getSeats);
+                    databaseReference.child("Noida").child(drID).child("Passengers").child(PASSid).child("Passenger_Name").setValue(name);
+                    databaseReference.child("Noida").child(drID).child("Passengers").child(PASSid).child("Passenger_ID").setValue(PASSid);
+                    databaseReference.child("Noida").child(drID).child("Passengers").child(PASSid).child("Passenger_Number").setValue(number);
+
+                    Toast.makeText(no_book.this, "Seat Booked", Toast.LENGTH_SHORT).show();
+
+                    startActivity(new Intent(no_book.this, Seat_Booked_Successfully.class));
+                }
+
+                else{
+                    Toast.makeText(no_book.this, "Driver and Passenger ID cannot be Same", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
             }
         });

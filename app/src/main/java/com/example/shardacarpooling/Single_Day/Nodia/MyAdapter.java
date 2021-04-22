@@ -56,6 +56,8 @@ class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                 intent.putExtra("Date",temp.getDate());
                 intent.putExtra("model",temp.getCar_Model() +" " + temp.getCar_Number());
                 intent.putExtra("gate",temp.getPick_up_Location());
+                intent.putExtra("number",temp.getMobile_Number());
+
                 context.startActivity(intent);
             }
         });

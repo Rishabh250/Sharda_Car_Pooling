@@ -1,22 +1,10 @@
 package com.example.shardacarpooling;
 
 public class list {
-    String Full_Name, System_ID,Car_Model,Car_Number,Destination,Morning_Time,Evening_Time,Price,Total_Seats;
+    String Full_Name, Mobile_Number, System_ID, Car_Model, Car_Number, Destination, Morning_Time, Evening_Time, Price, Total_Seats;
 
-    list(){}
-
-    public list(String full_Name, String system_ID, String car_Model, String car_Number, String destination, String morning_Time, String evening_Time, String price, String total_Seats) {
-        Full_Name = full_Name;
-        System_ID = system_ID;
-        Car_Model = car_Model;
-        Car_Number = car_Number;
-        Destination = destination;
-        Morning_Time = morning_Time;
-        Evening_Time = evening_Time;
-        Price = price;
-        Total_Seats = total_Seats;
+    list() {
     }
-
 
     public String getFull_Name() {
         return Full_Name;
@@ -24,6 +12,14 @@ public class list {
 
     public void setFull_Name(String full_Name) {
         Full_Name = full_Name;
+    }
+
+    public String getMobile_Number() {
+        return Mobile_Number;
+    }
+
+    public void setMobile_Number(String mobile_Number) {
+        Mobile_Number = mobile_Number;
     }
 
     public String getSystem_ID() {

@@ -33,7 +33,7 @@ public class Driver extends AppCompatActivity {
 
 
     Button btnDatePicker, btnTimePicker;
-    EditText txtDate, txtTime, dr_fullName, dr_sysID, dr_seats, dr_carModel, dr_car_number,dr_price;
+    EditText txtDate, txtTime, dr_fullName, dr_sysID, dr_seats, dr_carModel, dr_car_number,dr_price,dr_mobile_number;
     private int mYear, mMonth, mDay, mHour, mMinute;
     FirebaseAuth auth;
     DatabaseReference databaseReference;
@@ -55,6 +55,7 @@ public class Driver extends AppCompatActivity {
 
 
         dr_fullName = findViewById(R.id.single_driver_full_name);
+        dr_mobile_number = findViewById(R.id.single_mobile_number);
         dr_sysID = findViewById(R.id.single_driver_systemID);
         dr_seats = findViewById(R.id.single_dr_seats);
         dr_carModel = findViewById(R.id.single_car_model);
@@ -72,6 +73,7 @@ public class Driver extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 final String name = dr_fullName.getText().toString().trim();
+                final String mobile = dr_mobile_number.getText().toString().trim();
                 final String sysID = dr_sysID.getText().toString().trim();
                 final String seats = dr_seats.getText().toString().trim();
                 final String carModel = dr_carModel.getText().toString().trim().toUpperCase();
@@ -87,6 +89,15 @@ public class Driver extends AppCompatActivity {
 
                 if (name.isEmpty()) {
                     Toast.makeText(Driver.this, "Enter Full Name", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(mobile.isEmpty()){
+                    Toast.makeText(Driver.this, "Enter Mobile Number", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if(mobile.length()!=10) {
+                    Toast.makeText(Driver.this, "Invalid Mobile Number", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (sysID.isEmpty()) {
@@ -140,6 +151,7 @@ public class Driver extends AppCompatActivity {
                 if(sysID.length()==10)
                 {
                     databaseReference.child(dropCity).child(sysID).child("Full_Name").setValue(name);
+                    databaseReference.child(dropCity).child(sysID).child("Mobile_Number").setValue(mobile);
                     databaseReference.child(dropCity).child(sysID).child("System_ID").setValue(sysID);
                     databaseReference.child(dropCity).child(sysID).child("Destination").setValue(dropCity);
                     databaseReference.child(dropCity).child(sysID).child("Pick_up_Location").setValue(pickUp);

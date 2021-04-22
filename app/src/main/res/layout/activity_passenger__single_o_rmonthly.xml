@@ -58,12 +58,12 @@
                 android:textColor="@color/colorBlack"
                 android:textSize="40dp"
                 android:textStyle="bold"
+                android:layout_marginTop="30dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.494"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.039" />
+                app:layout_constraintVertical_bias="0" />
 
             <RadioButton
                 android:id="@+id/pMonthly"
@@ -73,15 +73,16 @@
                 android:button="@color/transparent"
                 android:elevation="40dp"
                 android:gravity="center"
+                android:layout_marginTop="40dp"
                 android:text="Monthly Basis"
                 android:textSize="30dp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.495"
+                app:layout_constraintHorizontal_bias="0.492"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView19"
-                app:layout_constraintVertical_bias="0.2" />
+                app:layout_constraintVertical_bias="0" />
 
             <RadioButton
                 android:id="@+id/pSingle"
@@ -94,47 +95,51 @@
                 android:text="Single Day Basis"
                 android:textSize="30dp"
                 android:textStyle="bold"
+                android:layout_marginTop="40dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.495"
+                app:layout_constraintHorizontal_bias="0.492"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/pMonthly"
-                app:layout_constraintVertical_bias="0.448" />
+                app:layout_constraintVertical_bias="0" />
+
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
-
     <Button
         android:id="@+id/pbutton1"
         android:layout_width="203dp"
         android:layout_height="66dp"
         android:background="@drawable/button03"
-        android:text="Book a car"
-        android:visibility="visible"
-        android:textColor="@color/colorWhite"
-        android:textStyle="bold"
-        android:textSize="20dp"
         android:elevation="20dp"
+        android:text="Book a car"
+        android:textColor="@color/colorWhite"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:visibility="visible"
+        android:layout_marginTop="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView" />
-
+        app:layout_constraintTop_toBottomOf="@+id/cardView"
+        app:layout_constraintVertical_bias="0" />
     <Button
         android:id="@+id/pbutton2"
         android:layout_width="203dp"
         android:layout_height="66dp"
         android:background="@drawable/button03"
         android:elevation="20dp"
-        android:text="Book a Car"
+        android:text="Book a car"
         android:textColor="@color/colorWhite"
         android:textSize="20dp"
         android:textStyle="bold"
         android:visibility="gone"
+        android:layout_marginTop="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView" />
-
+        app:layout_constraintTop_toBottomOf="@+id/cardView"
+        app:layout_constraintVertical_bias="0"  />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

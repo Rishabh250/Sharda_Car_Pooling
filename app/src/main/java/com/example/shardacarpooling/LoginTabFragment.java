@@ -16,6 +16,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,12 +40,12 @@ public class LoginTabFragment extends Fragment {
     EditText shardaMail, pass;
     TextView forgetPass;
     Button login;
+    ProgressBar progressBar;
     FloatingActionButton google,fb,twitter;
     ImageView hidePassword,showPassword;
     SharedPreferences sharedPreferences;
 
     private static final String Shared_Pref_Name = "mypref";
-    private static final String Key_Name = "name";
     private static final String Key_Email = "email";
     private FirebaseAuth firebaseAuth;
     float v = 0;
@@ -57,6 +58,7 @@ public class LoginTabFragment extends Fragment {
         pass = root.findViewById(R.id.pass);
         forgetPass = root.findViewById(R.id.forgetPass_btn);
         login = root.findViewById(R.id.login_btn);
+        progressBar = root.findViewById(R.id.pb);
         google = root.findViewById(R.id.fab_google);
         fb = root.findViewById(R.id.fab_facebook);
         twitter = root.findViewById(R.id.fab_twitter);
@@ -93,17 +95,24 @@ public class LoginTabFragment extends Fragment {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 String mail = shardaMail.getText().toString().trim();
                 String password = pass.getText().toString().trim();
 
+                progressBar.setVisibility(View.VISIBLE);
+
                 if (mail.isEmpty()) {
                     Toast.makeText(getActivity(), "System ID cannot be empty", Toast.LENGTH_SHORT).show();
+                    progressBar.setVisibility(View.INVISIBLE);
+
                     return;
                 }
 
 
                 if (password.isEmpty()) {
                     Toast.makeText(getActivity(), "Enter Password", Toast.LENGTH_SHORT).show();
+                    progressBar.setVisibility(View.INVISIBLE);
+
                     return;
                 }
                 SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -116,8 +125,11 @@ public class LoginTabFragment extends Fragment {
                                 if (task.isSuccessful()) {
                                     Intent intent = new Intent(getActivity(),DandPselection.class);
                                     startActivity(intent);
+                                    progressBar.setVisibility(View.INVISIBLE);
                                 } else {
                                     Toast.makeText(getContext(), "Invalid Details", Toast.LENGTH_SHORT).show();
+                                    progressBar.setVisibility(View.INVISIBLE);
+
                                 }
                             }
                         });

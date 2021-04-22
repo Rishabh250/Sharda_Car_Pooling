@@ -13,6 +13,7 @@ import android.widget.RadioButton;
 import com.example.shardacarpooling.Monthly_Data.city_select;
 import com.example.shardacarpooling.Single_Day.city_select_for_single_dr;
 
+
 public class Passenger_SingleORmonthly extends AppCompatActivity {
 
     RadioButton passengerSingleDay,passengerMonthlyCab;
@@ -68,4 +69,5 @@ public class Passenger_SingleORmonthly extends AppCompatActivity {
             }
         });
     }
+
 }

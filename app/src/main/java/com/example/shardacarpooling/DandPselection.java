@@ -35,7 +35,7 @@ public class DandPselection extends AppCompatActivity {
     TextView name_driver,name;
     RadioButton driver,passenger;
     float v = 0;
-    Button buttonDP,buttonDP2,selectONE;
+    Button buttonDP,buttonDP2,selectONE,logout;
     SharedPreferences sharedPreferences;
 
     private static final String Shared_Pref_Name = "mypref";
@@ -52,6 +52,7 @@ public class DandPselection extends AppCompatActivity {
         buttonDP2 = findViewById(R.id.dandpbutton2);
         name_driver = findViewById(R.id.textView10);
         selectONE = findViewById(R.id.select_one);
+        logout = findViewById(R.id.logout);
 
         user = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("Members");
@@ -115,5 +116,22 @@ public class DandPselection extends AppCompatActivity {
             }
         });
 
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               SharedPreferences.Editor editor = sharedPreferences.edit();
+               editor.clear();
+               editor.apply();
+               startActivity(new Intent(DandPselection.this,Login_Activity.class));
+               finish();
+            }
+        });
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finishAffinity();
     }
 }

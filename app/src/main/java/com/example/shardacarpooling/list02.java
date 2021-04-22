@@ -1,7 +1,7 @@
 package com.example.shardacarpooling;
 
 public class list02 {
-    String Full_Name, System_ID,Car_Model,Car_Number,Destination,Time,Date,Price,Total_Seats,Pick_up_Location;
+    String Full_Name, System_ID,Car_Model,Car_Number,Destination,Time,Date,Price,Total_Seats,Pick_up_Location,Mobile_Number;
 
     list02(){}
 
@@ -83,5 +83,13 @@ public class list02 {
 
     public void setPick_up_Location(String pick_up_Location) {
         Pick_up_Location = pick_up_Location;
+    }
+
+    public String getMobile_Number() {
+        return Mobile_Number;
+    }
+
+    public void setMobile_Number(String mobile_Number) {
+        Mobile_Number = mobile_Number;
     }
 }

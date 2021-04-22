@@ -20,7 +20,7 @@ import java.util.Calendar;
 
 public class Monthly_Cab extends AppCompatActivity {
 
-    TextView dr_fullname, dr_systemID, car_model, car_number, morning_time, evening_time, dr_total_seats, dr_price;
+    EditText dr_fullname, dr_systemID, car_model, car_number, morning_time, evening_time, dr_total_seats, dr_price,dr_mobileNumber;
     Button monthly_register;
     DatabaseReference databaseReference;
     Button btnEveningTimePicker, btnMorningTimePicker;
@@ -38,6 +38,7 @@ public class Monthly_Cab extends AppCompatActivity {
 
 
         dr_fullname = findViewById(R.id.driver_full_name);
+        dr_mobileNumber = findViewById(R.id.mobilenumber);
         dr_systemID = findViewById(R.id.driver_systemID);
         car_model = findViewById(R.id.car_model);
         car_number = findViewById(R.id.car_number);
@@ -56,6 +57,7 @@ public class Monthly_Cab extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 final String name = dr_fullname.getText().toString().trim();
+                final String mobile = dr_mobileNumber.getText().toString().trim();
                 final String sysID = dr_systemID.getText().toString().trim();
                 final String carModel = car_model.getText().toString().trim();
                 final String carNumber = car_number.getText().toString().trim();
@@ -67,6 +69,16 @@ public class Monthly_Cab extends AppCompatActivity {
 
                 if (name.isEmpty()) {
                     Toast.makeText(Monthly_Cab.this, "Enter Full Name", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if(mobile.isEmpty()){
+                    Toast.makeText(Monthly_Cab.this, "Enter Mobile Number", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if(mobile.length()!=10){
+                    Toast.makeText(Monthly_Cab.this, "Invalid Mobile Number", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -107,6 +119,7 @@ public class Monthly_Cab extends AppCompatActivity {
 
                 if (sysID.length() == 10) {
                     databaseReference.child(dropCity).child(sysID).child("Full_Name").setValue(name);
+                    databaseReference.child(dropCity).child(sysID).child("Mobile_Number").setValue(mobile);
                     databaseReference.child(dropCity).child(sysID).child("System_ID").setValue(sysID);
                     databaseReference.child(dropCity).child(sysID).child("Destination").setValue(dropCity);
                     databaseReference.child(dropCity).child(sysID).child("Car_Model").setValue(carModel);

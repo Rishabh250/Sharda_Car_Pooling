@@ -55,6 +55,7 @@ class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                 intent.putExtra("MT",temp.getMorning_Time());
                 intent.putExtra("ET",temp.getEvening_Time());
                 intent.putExtra("model",temp.getCar_Model() +" " + temp.getCar_Number());
+                intent.putExtra("number",temp.getMobile_Number());
                 context.startActivity(intent);
 
             }
